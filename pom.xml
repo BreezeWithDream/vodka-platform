@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.vodka</groupId>
+    <artifactId>vodka-platform</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>整体的父工程</description>
+    <modules>
+        <module>vodka-ability</module>
+        <module>vodka-business</module>
+        <module>vodka-common</module>
+        <module>vodka-config</module>
+        <module>vodka-data</module>
+    </modules>
+
+
+    <properties>
+        <!--        依赖版本管理-->
+        <springboot.version>2.3.2.RELEASE</springboot.version>
+        <springcloud-netflix.version>Hoxton.SR9</springcloud-netflix.version>
+        <springcloud-alibaba.version>2.2.5.RELEASE</springcloud-alibaba.version>
+
+
+        <!--        基础版本管理-->
+        <basic.version>1.0-SNAPSHOT</basic.version>
+
+        <!--        插件版本号-->
+        <maven-plugin.version>3.8.1</maven-plugin.version>
+        <jdk.version>1.8</jdk.version>
+
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--    添加SpringBoot, SpringCloud Netflix, SpringCloud Alibaba 相关依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud-netflix.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${springcloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--            自己架构相关依赖-->
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-common-web</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-common-core</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- Maven编译插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-plugin.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${springboot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
