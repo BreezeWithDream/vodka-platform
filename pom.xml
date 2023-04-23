@@ -73,8 +73,33 @@
                 <artifactId>vodka-common-core</artifactId>
                 <version>${basic.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-config</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!--    Maven占位符-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <runtime-profile>dev</runtime-profile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <runtime-profile>test</runtime-profile>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -107,5 +132,12 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <!--        配置占位符的统一生效-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

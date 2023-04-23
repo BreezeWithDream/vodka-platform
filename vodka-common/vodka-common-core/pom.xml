@@ -8,6 +8,12 @@
         <artifactId>vodka-common</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <!--
+        自定义SpringBoot启动器, 对于普通工具类， 无需做成启动器， 直接依赖即可
+        但是对于一些配置类/组件， 这个时候直接依赖的话， 依赖方的SpringBoot工程不知道这些配置类的路径， 无法扫描到， 自然就不会生效(加入到容器中)
+        即便可以在依赖方SpringBoot工程中手动配置， 但是并不优雅
+        还是让启动器自己配置即可， 即让他自动配置， 将这些组件/配置类加入到容器中，方便其他SpringBoot工程直接依赖并使用这些组件/配置类
+     -->
     <description>非web工程公共模块(工具类等， 脱离了Servlet/Reactive等环境的相关功能组件)</description>
 
     <artifactId>vodka-common-core</artifactId>
