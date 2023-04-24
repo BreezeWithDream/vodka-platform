@@ -39,6 +39,9 @@
             <resource>
                 <directory>src/main/resources-test</directory>
             </resource>
+            <resource>
+                <directory>src/main/resources-file</directory>
+            </resource>
         </resources>
     </build>
 </project>
