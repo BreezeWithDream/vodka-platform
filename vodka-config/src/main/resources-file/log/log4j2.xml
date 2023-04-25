@@ -11,11 +11,11 @@
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
         </console>
         <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
-        <File name="log" fileName="logs/test.log" append="false">
+        <File name="log" fileName="logs/${ctx:logPath}/${ctx:logName}-test.log" append="false">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
         </File>
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
-        <RollingFile name="RollingFileInfo" fileName="logs/info.log"
+        <RollingFile name="RollingFileInfo" fileName="logs/${ctx:logPath}/${ctx:logName}-info.log"
                      filePattern="logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -30,7 +30,7 @@
                 <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             </filters>
         </RollingFile>
-        <RollingFile name="RollingFileWarn" fileName="logs/warn.log"
+        <RollingFile name="RollingFileWarn" fileName="logs/${ctx:logPath}/${ctx:logName}-warn.log"
                      filePattern="logs/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>
@@ -47,7 +47,7 @@
                 <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
             </filters>
         </RollingFile>
-        <RollingFile name="RollingFileError" fileName="logs/error.log"
+        <RollingFile name="RollingFileError" fileName="logs/${ctx:logPath}/${ctx:logName}-error.log"
                      filePattern="logs/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
             <Policies>

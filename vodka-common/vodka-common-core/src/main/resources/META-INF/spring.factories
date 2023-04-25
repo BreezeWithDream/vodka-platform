@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.vodka.common.core.config.BaseConfiguration
+org.springframework.context.ApplicationListener=\
+  com.vodka.common.core.listener.log.LogMDCListener
