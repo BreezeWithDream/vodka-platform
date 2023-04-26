@@ -14,6 +14,7 @@
     <modules>
         <module>vodka-business-stu-core</module>
         <module>vodka-business-stu-feign</module>
+        <module>vodka-business-stu-protocol</module>
     </modules>
 
     <properties>

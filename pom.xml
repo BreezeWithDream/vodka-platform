@@ -24,6 +24,7 @@
         <springcloud-netflix.version>Hoxton.SR9</springcloud-netflix.version>
         <springcloud-alibaba.version>2.2.5.RELEASE</springcloud-alibaba.version>
         <log4j2.version>2.15.0</log4j2.version>
+        <lombok.version>1.18.8</lombok.version>
 
         <!--        基础版本管理-->
         <basic.version>1.0-SNAPSHOT</basic.version>
@@ -72,6 +73,11 @@
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
 
             <!--            自己架构相关依赖-->
             <dependency>
@@ -87,6 +93,11 @@
             <dependency>
                 <groupId>com.vodka</groupId>
                 <artifactId>vodka-config</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-business-stu-protocol</artifactId>
                 <version>${basic.version}</version>
             </dependency>
         </dependencies>
