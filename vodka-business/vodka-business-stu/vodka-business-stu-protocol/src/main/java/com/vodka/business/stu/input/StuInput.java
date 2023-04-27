@@ -1,5 +1,6 @@
 package com.vodka.business.stu.input;
 
+import com.vodka.business.stu.annotation.VodkaValid;
 import lombok.Data;
 
 import javax.validation.constraints.*;
@@ -28,6 +29,6 @@ public class StuInput implements Serializable {
     // @Past(message = "生日范围不正确")
     private Date birthday;
 
-    @NotNull(message = "性别不能为空")
-    private Integer sex;
+    @VodkaValid
+    private String sex;
 }
