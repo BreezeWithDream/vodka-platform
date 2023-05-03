@@ -1,6 +1,7 @@
 package com.vodka.common.web.config;
 
 import com.vodka.common.web.exception.GlobalException;
+import com.vodka.common.web.utils.VodkaAppContextUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,5 +21,15 @@ public class WebBaseConfiguration {
     @Bean
     public GlobalException globalException() {
         return new GlobalException();
+    }
+
+    /**
+     * 将ApplicationContext工具类注册到容器中
+     *
+     * @return VodkaAppContextUtil对象
+     */
+    @Bean
+    public VodkaAppContextUtil vodkaAppContextUtil() {
+        return new VodkaAppContextUtil();
     }
 }

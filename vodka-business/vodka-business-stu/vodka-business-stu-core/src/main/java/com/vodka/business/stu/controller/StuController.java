@@ -3,7 +3,6 @@ package com.vodka.business.stu.controller;
 import com.vodka.business.stu.input.StuInput;
 import com.vodka.common.web.result.R;
 import com.vodka.common.web.result.RUtil;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;

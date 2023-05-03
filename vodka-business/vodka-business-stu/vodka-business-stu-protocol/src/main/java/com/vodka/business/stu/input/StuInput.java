@@ -1,6 +1,7 @@
 package com.vodka.business.stu.input;
 
-import com.vodka.business.stu.annotation.VodkaValid;
+import com.vodka.business.stu.validator.StuAgeValidator;
+import com.vodka.common.web.validate.annotation.VodkaValidator;
 import lombok.Data;
 
 import javax.validation.constraints.*;
@@ -21,6 +22,7 @@ public class StuInput implements Serializable {
     @Min(value = 10, message = "年龄不小于10")
     @Max(value = 30, message = "年龄不大于30")
     @NotNull(message = "年龄不能为空")
+    @VodkaValidator(message = "年龄校验失败", validator = StuAgeValidator.class)
     private Integer age;
 
     @Email(message = "邮箱格式不正确")
@@ -29,6 +31,5 @@ public class StuInput implements Serializable {
     // @Past(message = "生日范围不正确")
     private Date birthday;
 
-    @VodkaValid
     private String sex;
 }

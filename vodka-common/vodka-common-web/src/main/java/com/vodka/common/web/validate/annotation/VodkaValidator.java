@@ -1,10 +1,11 @@
-package com.vodka.business.stu.annotation;
+package com.vodka.common.web.validate.annotation;
 
-import com.vodka.business.stu.handler.VodkaValidHandler;
+
+import com.vodka.common.web.validate.VodkaValid;
+import com.vodka.common.web.validate.handler.VodkaValidatorHandler;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.groups.Default;
 import java.lang.annotation.*;
 
 /**
@@ -15,8 +16,8 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-@Constraint(validatedBy = VodkaValidHandler.class)    // 自定义校验注解必须标注的类, validateBy用于指定具体使用的校验类
-public @interface VodkaValid {
+@Constraint(validatedBy = VodkaValidatorHandler.class)    // 自定义校验注解必须标注的类, validateBy用于指定具体使用的校验类
+public @interface VodkaValidator {
     /**
      * 校验失败后的信息
      *
@@ -42,4 +43,11 @@ public @interface VodkaValid {
      */
     Class<? extends Payload>[] payload() default {};
 
+
+    /**
+     * 用于指定校验器
+     *
+     * @return
+     */
+    Class<? extends VodkaValid> validator();
 }
