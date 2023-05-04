@@ -13,6 +13,7 @@
     <modules>
         <module>vodka-data-entity</module>
         <module>vodka-data-mapper</module>
+        <module>vodka-data-base</module>
     </modules>
 
     <artifactId>vodka-data</artifactId>

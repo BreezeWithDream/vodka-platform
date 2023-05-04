@@ -90,6 +90,11 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
 
 
             <!--            自己架构相关依赖-->
@@ -111,6 +116,26 @@
             <dependency>
                 <groupId>com.vodka</groupId>
                 <artifactId>vodka-business-stu-protocol</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-common-mysql</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-data-entity-stu</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-data-mapper-stu</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-data-base</artifactId>
                 <version>${basic.version}</version>
             </dependency>
 

@@ -1,3 +1,6 @@
 spring:
   datasource:
-    url: 开发和测试统一数据库地址
+    url: jdbc:mysql:///vodka?serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver

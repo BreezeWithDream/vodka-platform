@@ -1,13 +1,17 @@
 package com.vodka.business.stu.controller;
 
 import com.vodka.business.stu.input.StuInput;
+import com.vodka.business.stu.service.StuService;
 import com.vodka.common.web.result.R;
 import com.vodka.common.web.result.RUtil;
+import com.vodka.data.entity.Stu;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author Breeze
@@ -19,15 +23,16 @@ import javax.validation.Valid;
 @RequestMapping("/stu")
 public class StuController {
 
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
 
+    @Autowired
+    private StuService stuService;
 
     @GetMapping("/list")
     public Object list() {
-        int a = 1 / 0;
+        log.info("学生列表查询");
+        List<Stu> stuList = stuService.list();
 
-        return "stu list";
+        return RUtil.success(stuList);
     }
 
     @PostMapping("/insert")
