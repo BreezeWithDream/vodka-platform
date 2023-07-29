@@ -28,8 +28,8 @@ public class GlobalException {
     /**
      * 处理全局异常
      *
-     * @param throwable
-     * @return
+     * @param throwable throwable
+     * @return  R
      */
     @ExceptionHandler(Throwable.class)
     public R exceptionHandler(Throwable throwable) {
