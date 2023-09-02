@@ -3,7 +3,6 @@ package com.vodka.business.stu.validator;
 import com.vodka.business.stu.input.StuInput;
 import com.vodka.common.web.validate.VodkaValid;
 import com.vodka.common.web.validate.annotation.VodkaValidator;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 /**
