@@ -25,6 +25,11 @@
             <artifactId>spring-boot-starter</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.vodka</groupId>
+            <artifactId>vodka-common-mysql</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <!--    解决Maven命令打包之后, config模块中target/classes目录下只存在一个配置文件-->
