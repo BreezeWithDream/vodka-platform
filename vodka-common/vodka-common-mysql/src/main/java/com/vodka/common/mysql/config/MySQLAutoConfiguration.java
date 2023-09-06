@@ -1,5 +1,6 @@
 package com.vodka.common.mysql.config;
 
+import com.vodka.common.mysql.plugin.SQLPagePlugin;
 import com.vodka.common.mysql.plugin.SQLRecordPlugin;
 import com.vodka.common.mysql.properties.SQLRecordConfigProperties;
 import org.mybatis.spring.annotation.MapperScan;
@@ -30,6 +31,16 @@ public class MySQLAutoConfiguration {
     @ConditionalOnProperty(name = "vodka.plugins.sql.record.enable", havingValue = "true", matchIfMissing = false)
     public SQLRecordPlugin sqlRecordPlugin() {
         return new SQLRecordPlugin();
+    }
+
+    /**
+     * SQL分页插件/拦截器, 注册到容器中
+     *
+     * @return SQLPagePlugin
+     */
+    @Bean
+    public SQLPagePlugin sqlPagePlugin() {
+        return new SQLPagePlugin();
     }
 
 }
