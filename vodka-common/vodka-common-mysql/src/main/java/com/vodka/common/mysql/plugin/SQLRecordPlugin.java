@@ -1,5 +1,6 @@
 package com.vodka.common.mysql.plugin;
 
+import com.vodka.common.mysql.utils.MyBatisProxyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -28,7 +29,9 @@ import java.util.Locale;
 public class SQLRecordPlugin implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+        // 通过MyBatisProxyUtil 获取最终的根源对象， 而不是代理过之后的对象
+        StatementHandler statementHandler = (StatementHandler) MyBatisProxyUtil.getNoProxyObject(invocation.getTarget());
+        log.info("记录插件中的 statementHandler: {}", statementHandler.getClass().getSimpleName());
         // 获取目标sql语句
         String targetSql = statementHandler.getBoundSql().getSql().toLowerCase(Locale.ROOT).replaceAll("\n", "");
 

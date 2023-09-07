@@ -2,6 +2,7 @@ package com.vodka.common.mysql.plugin;
 
 import com.vodka.common.mysql.page.VodkaPage;
 import com.vodka.common.mysql.page.VodkaPageContext;
+import com.vodka.common.mysql.utils.MyBatisProxyUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.statement.BaseStatementHandler;
@@ -29,7 +30,7 @@ import java.util.Locale;
 @Slf4j
 @Intercepts({
         // 在sql进行预编译之前进行拦截, 预编译之后再拦截就来不及了
-        @Signature(type = BaseStatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
+        @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
 public class SQLPagePlugin implements Interceptor {
 
     /**
@@ -42,9 +43,11 @@ public class SQLPagePlugin implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         // 获取原sql
-        StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+        StatementHandler statementHandler = (StatementHandler) MyBatisProxyUtil.getNoProxyObject(invocation.getTarget());
+
+        log.info("分页插件中的 statementHandler: {}", statementHandler.getClass().getSimpleName());
         BoundSql boundSql = statementHandler.getBoundSql();
-        String originSql = boundSql.getSql().toUpperCase(Locale.ROOT).replaceAll("\n", "");
+        String originSql = boundSql.getSql().toLowerCase(Locale.ROOT).replaceAll("\n", "");
         Connection connection = (Connection) invocation.getArgs()[0];
 
         VodkaPage page = VodkaPageContext.getPage();
@@ -87,9 +90,9 @@ public class SQLPagePlugin implements Interceptor {
     private Integer getTotal(Connection connection, StatementHandler statementHandler, String sql) throws SQLException {
         String countAlias = "total";
         String selectPrefix = "select count(*) as " + countAlias + " ";
-        String from = "from";
+        String from = " from ";
 
-        String getCountSql = selectPrefix + sql.substring(sql.indexOf(from));
+        String getCountSql = selectPrefix + sql.substring(getMainFromIndex(0, sql));
         log.info("get count sql: {}", getCountSql);
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -121,4 +124,35 @@ public class SQLPagePlugin implements Interceptor {
         }
         return 0;
     }
+
+    private Integer getMainFromIndex(int beginIndex, String sql) {
+        if (sql == null || sql.length() == 0) {
+
+            return -1;
+        }
+        String from = " from ";
+        int fromIndex = sql.indexOf(from, beginIndex);
+        if (fromIndex == -1) {
+            return -1;
+        }
+        String sqlSub = sql.substring(0, fromIndex);
+
+        int count = 0;
+        char[] chars = sqlSub.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            char ch = chars[i];
+            if (ch == '(') {
+                count++;
+            }
+            if (ch == ')') {
+                count--;
+            }
+        }
+        if (count == 0) {
+            return fromIndex;
+        } else {
+            return getMainFromIndex(fromIndex + 6, sql);
+        }
+    }
+
 }

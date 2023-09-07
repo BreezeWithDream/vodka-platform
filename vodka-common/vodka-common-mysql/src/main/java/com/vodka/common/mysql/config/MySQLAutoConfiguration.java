@@ -2,7 +2,7 @@ package com.vodka.common.mysql.config;
 
 import com.vodka.common.mysql.plugin.SQLPagePlugin;
 import com.vodka.common.mysql.plugin.SQLRecordPlugin;
-import com.vodka.common.mysql.properties.SQLRecordConfigProperties;
+import com.vodka.common.mysql.properties.SQLPluginConfigProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @MapperScan("com.vodka.data.mapper")
 @EnableTransactionManagement
-@EnableConfigurationProperties(SQLRecordConfigProperties.class)
+@EnableConfigurationProperties(SQLPluginConfigProperties.class)
 public class MySQLAutoConfiguration {
 
     /**
@@ -39,6 +39,7 @@ public class MySQLAutoConfiguration {
      * @return SQLPagePlugin
      */
     @Bean
+    @ConditionalOnProperty(name = "vodka.plugins.sql.page.enable", havingValue = "true", matchIfMissing = true)
     public SQLPagePlugin sqlPagePlugin() {
         return new SQLPagePlugin();
     }

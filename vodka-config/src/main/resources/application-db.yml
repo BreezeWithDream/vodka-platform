@@ -10,3 +10,5 @@ vodka:
     sql:
       record:
         enable: true
+      page:
+        enable: true

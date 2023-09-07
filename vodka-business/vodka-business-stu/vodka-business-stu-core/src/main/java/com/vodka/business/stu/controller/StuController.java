@@ -2,6 +2,7 @@ package com.vodka.business.stu.controller;
 
 import com.vodka.business.stu.input.StuInput;
 import com.vodka.business.stu.service.StuService;
+import com.vodka.common.mysql.page.VodkaPageContext;
 import com.vodka.common.web.result.R;
 import com.vodka.common.web.result.RUtil;
 import com.vodka.data.entity.Stu;
@@ -33,6 +34,7 @@ public class StuController {
     @GetMapping("/list")
     public Object list() {
         log.info("学生列表查询");
+        VodkaPageContext.setPage(1, 1);
         List<Stu> stuList = stuService.list();
 
         return RUtil.success(stuList);
