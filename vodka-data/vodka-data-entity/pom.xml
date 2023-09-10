@@ -12,6 +12,7 @@
     <description>项目数据实体模块</description>
     <modules>
         <module>vodka-data-entity-stu</module>
+        <module>vodka-data-entity-cls</module>
     </modules>
 
     <artifactId>vodka-data-entity</artifactId>

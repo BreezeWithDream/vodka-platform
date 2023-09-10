@@ -1,7 +1,7 @@
 server:
-  port: 8100
+  port: 8200
 spring:
   application:
-    name: vodka-stu
+    name: vodka-cls
   profiles:
     active: '@runtime-profile@' # 指定maven占位符， maven构建时会自动根据占位符进行构建, 取决于Profiles中勾选的是谁

@@ -13,6 +13,7 @@
     <description>项目的业务微服务父模块</description>
     <modules>
         <module>vodka-business-stu</module>
+        <module>vodka-business-cls</module>
     </modules>
 
     <artifactId>vodka-business</artifactId>

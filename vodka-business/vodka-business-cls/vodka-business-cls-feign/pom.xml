@@ -5,16 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.vodka</groupId>
-        <artifactId>vodka-data</artifactId>
+        <artifactId>vodka-business-cls</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>pom</packaging>
-    <description>项目数据映射文件模块</description>
-    <modules>
-        <module>vodka-data-mapper-stu</module>
-        <module>vodka-data-mapper-cls</module>
-    </modules>
-    <artifactId>vodka-data-mapper</artifactId>
+
+    <artifactId>vodka-business-cls-feign</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -22,10 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.vodka</groupId>
-            <artifactId>vodka-common-mysql</artifactId>
-        </dependency>
-    </dependencies>
 </project>

@@ -27,6 +27,7 @@
             <groupId>com.vodka</groupId>
             <artifactId>vodka-data-mapper-stu</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

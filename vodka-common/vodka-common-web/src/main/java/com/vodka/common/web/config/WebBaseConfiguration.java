@@ -1,9 +1,17 @@
 package com.vodka.common.web.config;
 
+import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.vodka.common.web.exception.GlobalException;
 import com.vodka.common.web.utils.VodkaAppContextUtil;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Breeze
@@ -14,33 +22,71 @@ import org.springframework.context.annotation.Configuration;
 public class WebBaseConfiguration {
 
     /**
-     * 注册全局异常处理类组件到容器中
-     *
-     * @return GlobalException
+     * 基础配置
      */
-    @Bean
-    public GlobalException globalException() {
-        return new GlobalException();
+    @Configuration
+    public static class Base {
+        /**
+         * 将ApplicationContext工具类注册到容器中
+         *
+         * @return VodkaAppContextUtil对象
+         */
+        @Bean
+        public VodkaAppContextUtil vodkaAppContextUtil() {
+            return new VodkaAppContextUtil();
+        }
     }
 
     /**
-     * 将ApplicationContext工具类注册到容器中
-     *
-     * @return VodkaAppContextUtil对象
+     * WebMvc相关配置
      */
-    @Bean
-    public VodkaAppContextUtil vodkaAppContextUtil() {
-        return new VodkaAppContextUtil();
+    @Configuration
+    public static class WebMvc {
+        /**
+         * 注册全局异常处理类组件到容器中
+         *
+         * @return GlobalException
+         */
+        @Bean
+        public GlobalException globalException() {
+            return new GlobalException();
+        }
+
+        /**
+         * 注册WebInterceptor注册器到容器中
+         *
+         * @return WebInterceptorRegister
+         */
+        @Bean
+        public WebInterceptorRegister webInterceptorRegister() {
+            return new WebInterceptorRegister();
+        }
     }
 
+
     /**
-     * 注册WebInterceptor注册器到容器中
-     *
-     * @return WebInterceptorRegister
+     * Nacos相关配置
      */
-    @Bean
-    public WebInterceptorRegister webInterceptorRegister() {
-        return new WebInterceptorRegister();
+    @Configuration
+    @EnableDiscoveryClient
+    public static class Nacos {
+
+        /**
+         * 配置Nacos服务发现属性统一配置
+         *
+         * @return NacosDiscoveryProperties
+         */
+        @Bean
+        @Primary
+        public NacosDiscoveryProperties nacosDiscoveryProperties() {
+            NacosDiscoveryProperties nacosDiscoveryProperties = new NacosDiscoveryProperties();
+
+            Map<String, String> metaData = new HashMap<>();
+            metaData.put("onlineTime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            nacosDiscoveryProperties.setMetadata(metaData);
+            return nacosDiscoveryProperties;
+        }
     }
+
 
 }

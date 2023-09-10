@@ -22,7 +22,7 @@ public class WebInterceptorRegister implements WebMvcConfigurer {
      * 对于其他模块的Interceptor也可以进行注册，只需要他们将对应的Interceptor注册到容器中即可
      * 解耦合
      */
-    @Autowired
+    @Autowired(required = false)
     private List<HandlerInterceptorAdapter> handlerInterceptorAdapters;
 
     @Override
