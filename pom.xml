@@ -138,6 +138,11 @@
                 <artifactId>vodka-data-base</artifactId>
                 <version>${basic.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-common-base</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

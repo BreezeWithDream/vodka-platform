@@ -1,11 +1,14 @@
 package com.vodka.common.mysql.config;
 
+import com.vodka.common.mysql.advice.PageResponseBodyAdvice;
 import com.vodka.common.mysql.interceptor.PageRequestInterceptor;
 import com.vodka.common.mysql.plugin.SQLPagePlugin;
 import com.vodka.common.mysql.plugin.SQLRecordPlugin;
 import com.vodka.common.mysql.properties.SQLPluginConfigProperties;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,7 +55,20 @@ public class MySQLAutoConfiguration {
      */
     @Bean
     @ConditionalOnProperty(name = "vodka.plugins.sql.page.enable", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     public PageRequestInterceptor pageInterceptor() {
         return new PageRequestInterceptor();
     }
+
+    /**
+     * 注册Page分页返回增强器
+     *
+     * @return PageResponseBodyAdvice
+     */
+    @Bean
+    @ConditionalOnProperty(name = "vodka.plugins.sql.page.enable", havingValue = "true", matchIfMissing = true)
+    public PageResponseBodyAdvice pageResponseBodyAdvice() {
+        return new PageResponseBodyAdvice();
+    }
+
 }

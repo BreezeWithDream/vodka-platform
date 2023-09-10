@@ -1,5 +1,7 @@
 package com.vodka.common.mysql.page;
 
+import com.vodka.common.base.page.VodkaPage;
+
 /**
  * @author Breeze
  * @date 2023/9/6 22:35

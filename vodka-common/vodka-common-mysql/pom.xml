@@ -20,6 +20,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.vodka</groupId>
+            <artifactId>vodka-common-base</artifactId>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>

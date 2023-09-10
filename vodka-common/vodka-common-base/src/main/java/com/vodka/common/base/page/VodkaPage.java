@@ -1,4 +1,4 @@
-package com.vodka.common.mysql.page;
+package com.vodka.common.base.page;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

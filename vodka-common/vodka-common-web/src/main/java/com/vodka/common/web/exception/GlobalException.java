@@ -1,8 +1,8 @@
 package com.vodka.common.web.exception;
 
-import com.vodka.common.web.result.Codes;
-import com.vodka.common.web.result.R;
-import com.vodka.common.web.result.RUtil;
+import com.vodka.common.base.result.Codes;
+import com.vodka.common.base.result.R;
+import com.vodka.common.base.result.RUtil;
 import com.vodka.common.web.utils.VodkaRequestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;

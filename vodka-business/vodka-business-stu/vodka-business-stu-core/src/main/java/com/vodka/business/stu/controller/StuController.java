@@ -2,9 +2,8 @@ package com.vodka.business.stu.controller;
 
 import com.vodka.business.stu.input.StuInput;
 import com.vodka.business.stu.service.StuService;
-import com.vodka.common.mysql.page.VodkaPageContext;
-import com.vodka.common.web.result.R;
-import com.vodka.common.web.result.RUtil;
+import com.vodka.common.base.result.R;
+import com.vodka.common.base.result.RUtil;
 import com.vodka.data.entity.Stu;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class StuController {
     private StuService stuService;
 
     @GetMapping("/list")
-    public Object list() {
+    public R list() {
         log.info("学生列表查询");
         List<Stu> stuList = stuService.list();
 

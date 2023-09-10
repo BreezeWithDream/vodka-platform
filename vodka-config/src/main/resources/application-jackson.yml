@@ -2,3 +2,5 @@ spring:
   jackson:
     time-zone: UTC
     date-format: yyyy-MM-dd HH:mm:ss
+    # 如果json数据中某个字段值为空， 则不显示该字段
+#    default-property-inclusion: non_empty

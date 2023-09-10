@@ -1,4 +1,4 @@
-package com.vodka.common.web.result;
+package com.vodka.common.base.result;
 
 import lombok.Getter;
 
