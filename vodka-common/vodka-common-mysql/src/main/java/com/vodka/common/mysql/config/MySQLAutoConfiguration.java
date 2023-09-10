@@ -1,5 +1,6 @@
 package com.vodka.common.mysql.config;
 
+import com.vodka.common.mysql.interceptor.PageRequestInterceptor;
 import com.vodka.common.mysql.plugin.SQLPagePlugin;
 import com.vodka.common.mysql.plugin.SQLRecordPlugin;
 import com.vodka.common.mysql.properties.SQLPluginConfigProperties;
@@ -44,4 +45,14 @@ public class MySQLAutoConfiguration {
         return new SQLPagePlugin();
     }
 
+    /**
+     * 注册分页请求拦截器, 条件为配置文件中开启分页时进行注册
+     *
+     * @return PageRequestInterceptor
+     */
+    @Bean
+    @ConditionalOnProperty(name = "vodka.plugins.sql.page.enable", havingValue = "true", matchIfMissing = true)
+    public PageRequestInterceptor pageInterceptor() {
+        return new PageRequestInterceptor();
+    }
 }

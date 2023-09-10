@@ -34,7 +34,6 @@ public class StuController {
     @GetMapping("/list")
     public Object list() {
         log.info("学生列表查询");
-        VodkaPageContext.setPage(1, 1);
         List<Stu> stuList = stuService.list();
 
         return RUtil.success(stuList);

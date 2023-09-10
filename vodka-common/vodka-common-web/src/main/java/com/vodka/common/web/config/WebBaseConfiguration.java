@@ -32,4 +32,15 @@ public class WebBaseConfiguration {
     public VodkaAppContextUtil vodkaAppContextUtil() {
         return new VodkaAppContextUtil();
     }
+
+    /**
+     * 注册WebInterceptor注册器到容器中
+     *
+     * @return WebInterceptorRegister
+     */
+    @Bean
+    public WebInterceptorRegister webInterceptorRegister() {
+        return new WebInterceptorRegister();
+    }
+
 }
