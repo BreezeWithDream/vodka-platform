@@ -158,6 +158,11 @@
                 <artifactId>vodka-business-cls-feign</artifactId>
                 <version>${basic.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-common-sentinel</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
 
 
         </dependencies>

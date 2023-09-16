@@ -1,0 +1,13 @@
+feign:
+  client:
+    config:
+      # 配置feign的默认属性, 默认配置, 对所有feign调用都生效, 但是有时候不同服务之间不尽相同
+      default:
+        # 连接超时时间, 默认1s
+        connect-timeout: 1000
+        # 读超时， 默认1s
+        read-timeout: 1000
+      # 不同的服务进行定制
+      vodka-cls:
+        connect-timeout: 1000
+        read-timeout: 3000

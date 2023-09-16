@@ -1,0 +1,7 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: vodka-gateway
+  profiles:
+    active: '@runtime-profile@' # 指定maven占位符， maven构建时会自动根据占位符进行构建, 取决于Profiles中勾选的是谁

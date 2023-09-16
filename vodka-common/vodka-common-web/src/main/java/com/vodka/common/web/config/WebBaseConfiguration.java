@@ -2,6 +2,7 @@ package com.vodka.common.web.config;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.vodka.common.web.exception.GlobalException;
+import com.vodka.common.web.feign.RequestParameterInterceptor;
 import com.vodka.common.web.utils.VodkaAppContextUtil;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -90,7 +91,8 @@ public class WebBaseConfiguration {
     }
 
     @Configuration
-    @EnableFeignClients(basePackages = "com.vodka.business.feign")
+    @EnableFeignClients(basePackages = "com.vodka.business.feign",
+            defaultConfiguration = RequestParameterInterceptor.class)
     public static class Feign {
 
     }
