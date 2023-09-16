@@ -19,11 +19,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Cls extends BaseEntity {
 
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String clsName;
 
-    private Integer clsNums;
+    private Integer clsNum;
 
 }

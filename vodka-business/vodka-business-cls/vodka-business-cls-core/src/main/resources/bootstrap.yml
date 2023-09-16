@@ -10,10 +10,4 @@ spring:
       #        shared-configs:
       #          - data-id: vodka-stu.yaml
       #            refresh: true
-      discovery:
-        # 心跳间隔时间
-        heart-beat-interval: 5000
-        # 心跳超时时间, 超过该时间之后， 会设置为不健康状态
-        heart-beat-timeout: 15000
-        # 剔除服务超时时间
-        ip-delete-timeout: 30000
+

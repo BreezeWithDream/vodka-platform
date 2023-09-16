@@ -143,6 +143,22 @@
                 <artifactId>vodka-common-base</artifactId>
                 <version>${basic.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-data-entity-cls</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-data-mapper-cls</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vodka</groupId>
+                <artifactId>vodka-business-cls-feign</artifactId>
+                <version>${basic.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

@@ -23,4 +23,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.vodka</groupId>
+            <artifactId>vodka-business-cls-feign</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

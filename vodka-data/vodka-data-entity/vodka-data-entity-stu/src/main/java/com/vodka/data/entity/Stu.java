@@ -23,6 +23,9 @@ public class Stu extends BaseEntity {
     //主键
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+    // 班级id
+    private Long cId;
+
     //姓名
     private String name;
     //年龄

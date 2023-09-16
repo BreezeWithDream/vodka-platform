@@ -4,6 +4,7 @@ import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.vodka.common.web.exception.GlobalException;
 import com.vodka.common.web.utils.VodkaAppContextUtil;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -86,6 +87,12 @@ public class WebBaseConfiguration {
             nacosDiscoveryProperties.setMetadata(metaData);
             return nacosDiscoveryProperties;
         }
+    }
+
+    @Configuration
+    @EnableFeignClients(basePackages = "com.vodka.business.feign")
+    public static class Feign {
+
     }
 
 
