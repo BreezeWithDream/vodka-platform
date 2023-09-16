@@ -27,6 +27,7 @@
         <lombok.version>1.18.8</lombok.version>
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <druid.version>1.2.16</druid.version>
+        <fastjson.version>1.2.83</fastjson.version>
 
         <!--        基础版本管理-->
         <basic.version>1.0-SNAPSHOT</basic.version>
@@ -94,6 +95,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-annotation</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
 

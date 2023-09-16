@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.vodka.common.mysql.config.MySQLAutoConfiguration
+  com.vodka.common.mysql.config.MySQLBaseConfiguration

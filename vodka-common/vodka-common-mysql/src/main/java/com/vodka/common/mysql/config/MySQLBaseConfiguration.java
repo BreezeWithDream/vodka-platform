@@ -6,7 +6,6 @@ import com.vodka.common.mysql.plugin.SQLPagePlugin;
 import com.vodka.common.mysql.plugin.SQLRecordPlugin;
 import com.vodka.common.mysql.properties.SQLPluginConfigProperties;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.vodka.data.mapper")
 @EnableTransactionManagement
 @EnableConfigurationProperties(SQLPluginConfigProperties.class)
-public class MySQLAutoConfiguration {
+public class MySQLBaseConfiguration {
 
     /**
      * 向容器中注册SQL记录拦截器/插件
