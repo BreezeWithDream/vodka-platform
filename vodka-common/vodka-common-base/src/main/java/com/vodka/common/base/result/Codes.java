@@ -13,7 +13,8 @@ public enum Codes {
     SUCCESS(200, "success"),
     FAIL(500, "fail"),
     PARAM_ERROR(501, "param error"),
-    FLOW_ERROR(429, "flow error");
+    FLOW_ERROR(429, "flow error"),
+    DEGRADE_ERROR(430, "degrade error");
 
     private Integer code;
     private String msg;

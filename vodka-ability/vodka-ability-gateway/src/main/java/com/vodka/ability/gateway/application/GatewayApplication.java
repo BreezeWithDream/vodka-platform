@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description
  */
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.vodka.ability.gateway")
 public class GatewayApplication {
 
     public static void main(String[] args) {

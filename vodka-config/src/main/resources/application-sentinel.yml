@@ -6,3 +6,9 @@ spring:
         dashboard: localhost:8858
         # 启动当前服务时， 开启一个用于sentinel和当前服务通信的端口
         port: 8719
+      nacos:
+        serverAddress: ${spring.cloud.nacos.server-addr}
+        namespace: sentinel
+        groupId: DEFAULT_GROUP
+        flowDataId: ${spring.application.name}-flow-rule
+        degradeDataId: ${spring.application.name}-degrade-rule

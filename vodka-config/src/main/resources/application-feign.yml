@@ -11,3 +11,5 @@ feign:
       vodka-cls:
         connect-timeout: 1000
         read-timeout: 3000
+  sentinel:
+    enabled: true

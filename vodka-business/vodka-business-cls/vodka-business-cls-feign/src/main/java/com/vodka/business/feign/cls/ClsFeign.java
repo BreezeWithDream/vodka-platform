@@ -1,5 +1,6 @@
 package com.vodka.business.feign.cls;
 
+import com.vodka.business.feign.fallback.ClsFeignFallback;
 import com.vodka.common.base.result.R;
 import com.vodka.data.entity.Cls;
 import lombok.extern.slf4j.Slf4j;
@@ -13,13 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2023/9/16 14:31
  * @description ClsFeign
  */
-@FeignClient(name = "vodka-cls")
+@FeignClient(name = "vodka-cls", fallback = ClsFeignFallback.class)
 public interface ClsFeign {
-
-
     @GetMapping("/cls/getByCId")
     R<Cls> getClsByCId(@RequestParam("cId") Long cId);
-
-
-
 }

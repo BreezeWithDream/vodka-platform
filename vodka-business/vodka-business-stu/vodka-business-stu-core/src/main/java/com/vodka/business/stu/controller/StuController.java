@@ -1,8 +1,10 @@
 package com.vodka.business.stu.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.vodka.business.feign.cls.ClsFeign;
 import com.vodka.business.stu.input.StuInput;
 import com.vodka.business.stu.service.StuService;
+import com.vodka.common.base.result.Codes;
 import com.vodka.common.base.result.R;
 import com.vodka.common.base.result.RUtil;
 import com.vodka.data.entity.Cls;
@@ -53,6 +55,7 @@ public class StuController {
     }
 
     @GetMapping("/getBySId")
+    @SentinelResource(fallback = "getBySIdFallback")
     public R getBySId(@RequestParam("sId") Long sId) {
         Stu stu = stuService.getById(sId);
 
@@ -63,5 +66,9 @@ public class StuController {
 
         return RUtil.success(stu);
 
+    }
+
+    public R getBySIdFallback(Integer sId) {
+        return RUtil.create(Codes.SUCCESS, "stu默认降级方法, sId=> " + sId);
     }
 }

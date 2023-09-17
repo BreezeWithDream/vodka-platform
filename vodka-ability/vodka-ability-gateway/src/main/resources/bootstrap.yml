@@ -7,15 +7,20 @@ spring:
         # 默认去配置中心读取配置文件的后缀名
         file-extension: yaml
         # 可以读取配置中心中的多个配置文件
-#        shared-configs:
-#          # 动态加载路由配置
-#          - data-id: gateway-routes.yaml
-#            refresh: true
+    #        shared-configs:
+    #          # 动态加载路由配置
+    #          - data-id: gateway-routes.yaml
+    #            refresh: true
     gateway:
       routes:
-        - uri: lb://vodka-stu
+        - id: stu
+          uri: lb://vodka-stu
           predicates:
             - Path=/stu/**
-        - uri: lb://vodka-cls
+        - id: cls
+          uri: lb://vodka-cls
           predicates:
             - Path=/cls/**
+    sentinel:
+      transport:
+        dashboard: localhost:8858

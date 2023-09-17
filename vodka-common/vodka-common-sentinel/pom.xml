@@ -41,6 +41,11 @@
             <groupId>com.vodka</groupId>
             <artifactId>vodka-common-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

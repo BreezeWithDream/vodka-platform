@@ -1,6 +1,7 @@
 package com.vodka.common.web.config;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
+import com.vodka.common.web.aspect.ControllerExceptionAspect;
 import com.vodka.common.web.exception.GlobalException;
 import com.vodka.common.web.feign.RequestParameterInterceptor;
 import com.vodka.common.web.utils.VodkaAppContextUtil;
@@ -62,6 +63,16 @@ public class WebBaseConfiguration {
         @Bean
         public WebInterceptorRegister webInterceptorRegister() {
             return new WebInterceptorRegister();
+        }
+
+        /**
+         * 自定义异常处理增强器（用于在Controller异常之外的异常）
+         *
+         * @return ControllerExceptionAspect
+         */
+        @Bean
+        public ControllerExceptionAspect controllerExceptionAspect() {
+            return new ControllerExceptionAspect();
         }
     }
 
