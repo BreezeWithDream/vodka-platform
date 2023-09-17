@@ -5,10 +5,12 @@ import com.alibaba.csp.sentinel.adapter.gateway.sc.callback.GatewayCallbackManag
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowException;
 import com.alibaba.fastjson.JSONObject;
+import com.vodka.ability.gateway.properties.NacosDataSourceProperties;
 import com.vodka.common.base.result.Codes;
 import com.vodka.common.base.result.R;
 import com.vodka.common.base.result.RUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
