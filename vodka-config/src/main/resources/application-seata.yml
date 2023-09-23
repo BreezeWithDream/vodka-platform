@@ -1,0 +1,20 @@
+seata:
+  registry:
+    type: nacos
+    # 配置Seata配置中心
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      namespace: "public"
+      group: "SEATA_GROUP"
+      username: "nacos"
+      password: "nacos"
+  config:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: "seata"
+      group: "SEATA_GROUP"
+      username: "nacos"
+      password: nacos
+  tx-service-group: my_test_tx_group
